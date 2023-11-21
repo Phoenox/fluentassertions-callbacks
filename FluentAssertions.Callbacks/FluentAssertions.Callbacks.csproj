@@ -10,7 +10,16 @@
         <RepositoryUrl>https://github.com/Phoenox/fluentassertions-callbacks</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>FluentAssertions</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PacakageLicenseExpression>MIT</PacakageLicenseExpression>
+        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
+        <Copyright>Copyright © 2023 Thomas Eggerling</Copyright>
+        <Version>1.0.1</Version>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="FluentAssertions" Version="6.12.0" />
