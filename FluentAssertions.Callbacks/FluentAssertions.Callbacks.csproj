@@ -12,7 +12,6 @@
         <PackageTags>FluentAssertions</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PacakageLicenseExpression>MIT</PacakageLicenseExpression>
-        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
         <Copyright>Copyright © 2023 Thomas Eggerling</Copyright>
         <Version>1.0.1</Version>
     </PropertyGroup>
