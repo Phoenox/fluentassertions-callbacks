@@ -43,7 +43,7 @@ public void GoodUnitTest()
     var testCallback = new CallbackSpy<int, string>();
     var sut = new Sut();
     
-    sut.DoSomething(testCallback);
+    sut.DoSomething(testCallback.Callback);
     
     testCallback.Should().HaveBeenCalledWith(42, "Hello World");
 }
