@@ -4,6 +4,12 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Authors>Thomas Eggerling</Authors>
+        <Description>A FluentAssertion extension to easily assert on callbacks.</Description>
+        <PackageProjectUrl>https://github.com/Phoenox/fluentassertions-callbacks</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Phoenox/fluentassertions-callbacks</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>FluentAssertions</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
