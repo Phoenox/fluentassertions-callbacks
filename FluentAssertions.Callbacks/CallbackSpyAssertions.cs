@@ -46,6 +46,16 @@ public class CallbackSpyAssertions<T>
 	}
 	
 	public AndConstraint<CallbackSpyAssertions<T>> HaveBeenCalledWith(
+			Predicate<T> matcher, string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(matcher))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T>> HaveBeenCalledWith(
 			T arg, string because = "", params object[] becauseArgs)
 	{
 		Execute.Assertion
@@ -67,10 +77,7 @@ public class CallbackSpyAssertions<T>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
@@ -96,6 +103,16 @@ public class CallbackSpyAssertions<T1, T2>
 	}
 	
 	public AndConstraint<CallbackSpyAssertions<T1, T2>> HaveBeenCalledWith(
+			Predicate<T1> m1, Predicate<T2> m2, string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(x => m1(x.Item1) && m2(x.Item2)))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T1, T2>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T1, T2>> HaveBeenCalledWith(
 			T1 arg1, T2 arg2, string because = "", params object[] becauseArgs)
 	{
 		Execute.Assertion
@@ -117,10 +134,7 @@ public class CallbackSpyAssertions<T1, T2>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
@@ -146,6 +160,18 @@ public class CallbackSpyAssertions<T1, T2, T3>
 	}
 	
 	public AndConstraint<CallbackSpyAssertions<T1, T2, T3>> HaveBeenCalledWith(
+			Predicate<T1> m1, Predicate<T2> m2, Predicate<T3> m3,
+			string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(
+						x => m1(x.Item1) && m2(x.Item2) && m3(x.Item3)))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T1, T2, T3>> HaveBeenCalledWith(
 			T1 arg1, T2 arg2, T3 arg3, string because = "", params object[] becauseArgs)
 	{
 		Execute.Assertion
@@ -167,10 +193,7 @@ public class CallbackSpyAssertions<T1, T2, T3>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
@@ -196,6 +219,18 @@ public class CallbackSpyAssertions<T1, T2, T3, T4>
 	}
 	
 	public AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4>> HaveBeenCalledWith(
+			Predicate<T1> m1, Predicate<T2> m2, Predicate<T3> m3, Predicate<T4> m4,
+			string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(
+						x => m1(x.Item1) && m2(x.Item2) && m3(x.Item3) && m4(x.Item4)))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4>> HaveBeenCalledWith(
 			T1 arg1, T2 arg2, T3 arg3, T4 arg4, string because = "", params object[] becauseArgs)
 	{
 		Execute.Assertion
@@ -217,10 +252,7 @@ public class CallbackSpyAssertions<T1, T2, T3, T4>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
@@ -242,6 +274,18 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5>
 				.BecauseOf(because, becauseArgs)
 				.ForCondition(Subject.InvokedWithArguments.Any())
 				.FailWith("Expected callback to have been invoked, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5>> HaveBeenCalledWith(
+			Predicate<T1> m1, Predicate<T2> m2, Predicate<T3> m3, Predicate<T4> m4, Predicate<T5> m5,
+			string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(
+						x => m1(x.Item1) && m2(x.Item2) && m3(x.Item3) && m4(x.Item4) && m5(x.Item5)))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
 		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5>>(this);
 	}
 	
@@ -268,10 +312,7 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
@@ -293,6 +334,20 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5, T6>
 				.BecauseOf(because, becauseArgs)
 				.ForCondition(Subject.InvokedWithArguments.Any())
 				.FailWith("Expected callback to have been invoked, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6>> HaveBeenCalledWith(
+			Predicate<T1> m1, Predicate<T2> m2, Predicate<T3> m3, Predicate<T4> m4, Predicate<T5> m5,
+			Predicate<T6> m6,
+			string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(
+						x => m1(x.Item1) && m2(x.Item2) && m3(x.Item3) && m4(x.Item4) && m5(x.Item5)
+						     && m6(x.Item6)))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
 		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6>>(this);
 	}
 	
@@ -320,10 +375,7 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5, T6>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
@@ -345,6 +397,20 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7>
 				.BecauseOf(because, becauseArgs)
 				.ForCondition(Subject.InvokedWithArguments.Any())
 				.FailWith("Expected callback to have been invoked, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7>> HaveBeenCalledWith(
+			Predicate<T1> m1, Predicate<T2> m2, Predicate<T3> m3, Predicate<T4> m4, Predicate<T5> m5,
+			Predicate<T6> m6, Predicate<T7> m7,
+			string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(
+						x => m1(x.Item1) && m2(x.Item2) && m3(x.Item3) && m4(x.Item4) && m5(x.Item5)
+						     && m6(x.Item6) && m7(x.Item7)))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
 		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7>>(this);
 	}
 	
@@ -372,10 +438,7 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
@@ -397,6 +460,20 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8>
 				.BecauseOf(because, becauseArgs)
 				.ForCondition(Subject.InvokedWithArguments.Any())
 				.FailWith("Expected callback to have been invoked, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8>> HaveBeenCalledWith(
+			Predicate<T1> m1, Predicate<T2> m2, Predicate<T3> m3, Predicate<T4> m4, Predicate<T5> m5,
+			Predicate<T6> m6, Predicate<T7> m7, Predicate<T8> m8,
+			string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(
+						x => m1(x.Item1) && m2(x.Item2) && m3(x.Item3) && m4(x.Item4) && m5(x.Item5)
+						     && m6(x.Item6) && m7(x.Item7) && m8(x.Item8)))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
 		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8>>(this);
 	}
 	
@@ -425,10 +502,7 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
@@ -450,6 +524,20 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8, T9>
 				.BecauseOf(because, becauseArgs)
 				.ForCondition(Subject.InvokedWithArguments.Any())
 				.FailWith("Expected callback to have been invoked, but it was not.");
+		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8, T9>>(this);
+	}
+	
+	public AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8, T9>> HaveBeenCalledWith(
+			Predicate<T1> m1, Predicate<T2> m2, Predicate<T3> m3, Predicate<T4> m4, Predicate<T5> m5,
+			Predicate<T6> m6, Predicate<T7> m7, Predicate<T8> m8, Predicate<T9> m9,
+			string because = "", params object[] becauseArgs)
+	{
+		Execute.Assertion
+				.BecauseOf(because, becauseArgs)
+				.ForCondition(Subject.InvokedWithArguments.Exists(
+						x => m1(x.Item1) && m2(x.Item2) && m3(x.Item3) && m4(x.Item4) && m5(x.Item5)
+						     && m6(x.Item6) && m7(x.Item7) && m8(x.Item8) && m9(x.Item9)))
+				.FailWith("Expected callback to have been invoked with matching arguments, but it was not.");
 		return new AndConstraint<CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8, T9>>(this);
 	}
 	
@@ -478,10 +566,7 @@ public class CallbackSpyAssertions<T1, T2, T3, T4, T5, T6, T7, T8, T9>
 
 		stringBuilder.AppendLine("invoked with:");
 		foreach (var argument in actualArguments)
-		{
 			stringBuilder.AppendLine($"- {argument}");
-		}
-
 		return stringBuilder.ToString();
 	}
 }
