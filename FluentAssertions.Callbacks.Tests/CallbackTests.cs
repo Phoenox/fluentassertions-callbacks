@@ -15,6 +15,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int>();
 		spy.Callback(42);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42);
 	}
 
@@ -23,6 +24,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int, int>();
 		spy.Callback(42, 43);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42, 43);
 	}
 	
@@ -31,6 +33,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int, int, int>();
 		spy.Callback(42, 43, 44);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42, 43, 44);
 	}
 	
@@ -39,6 +42,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int, int, int, int>();
 		spy.Callback(42, 43, 44, 45);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42, 43, 44, 45);
 	}
 	
@@ -47,6 +51,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int, int, int, int, int>();
 		spy.Callback(42, 43, 44, 45, 46);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42, 43, 44, 45, 46);
 	}
 	
@@ -55,6 +60,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int, int, int, int, int, int>();
 		spy.Callback(42, 43, 44, 45, 46, 47);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42, 43, 44, 45, 46, 47);
 	}
 	
@@ -63,6 +69,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int, int, int, int, int, int, int>();
 		spy.Callback(42, 43, 44, 45, 46, 47, 48);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42, 43, 44, 45, 46, 47, 48);
 	}
 	
@@ -71,6 +78,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int, int, int, int, int, int, int, int>();
 		spy.Callback(42, 43, 44, 45, 46, 47, 48, 49);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42, 43, 44, 45, 46, 47, 48, 49);
 	}
 	
@@ -79,6 +87,7 @@ public class CallbackTests
 	{
 		var spy = new CallbackSpy<int, int, int, int, int, int, int, int, int>();
 		spy.Callback(42, 43, 44, 45, 46, 47, 48, 49, 50);
+		spy.Should().HaveBeenCalled();
 		spy.Should().HaveBeenCalledWith(42, 43, 44, 45, 46, 47, 48, 49, 50);
 	}
 }

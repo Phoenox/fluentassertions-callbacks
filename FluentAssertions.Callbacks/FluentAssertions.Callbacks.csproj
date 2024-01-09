@@ -13,7 +13,7 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PacakageLicenseExpression>MIT</PacakageLicenseExpression>
         <Copyright>Copyright © 2023 Thomas Eggerling</Copyright>
-        <Version>1.0.2</Version>
+        <Version>1.1.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
