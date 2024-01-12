@@ -49,6 +49,6 @@ public void GoodUnitTest()
     
     // The following assertions are also possible
     testCallback.Should().HaveBeenCalled();
-    testCallback.Should().HaveBeenCalledWith(x => x > 40);
+    testCallback.Should().HaveBeenCalledWith(Arg<int>.Is(x => x > 40), "Hello World");
 }
 ```
